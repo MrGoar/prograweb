@@ -36,14 +36,14 @@
 
 				//Redireccion
 				if($rol=='Lector'){
-					header("Location: prueba.php?correo=$correo");
+					header("Location: registrar_lector_comentarios.php?correo=$correo");
 					die();
 					
 
 				}else{
 					
-					//header("Location: escritorregistro.php");
-					//die();
+					header("Location: registrarescritor.php?correo=$correo");
+					die();
 				}
 				
 
