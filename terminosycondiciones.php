@@ -1,6 +1,7 @@
-<?php    
-    session_start();
-    $nombre = $_SESSION['user'];    
+<?php
+ob_start();
+?>
+<?php     
     $servidor = "localhost";
     $usuarioBD = "root";
     $pwdBD = "";

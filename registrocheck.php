@@ -1,34 +1,15 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <title>Rome Blog</title>
-    <link rel="icon" type="image/png" href="../../img/icono.png" />
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="stylesheet" href="/css/templates.css">
-    <link rel="stylesheet" href="/css/home.css">
-    
-    
-    
-     
-    
-</head>
+<?php include("./templates/header.php")?>
 
 <body>
     <!--HEADER-->
-    <?php include("./templates/header.php")?>
+    
     <br>
     <br>
 
     <!--Contenido-->
 	<?php
 
-	//session_start();
+	
 	
 
 	//Datos de formulario
@@ -50,15 +31,18 @@
 			$sql="INSERT INTO usuarios (nombre_usu,correo,password,rol) VALUES('$name','$correo','$pass','$rol')";
 			//Si se inserta 
 			if(mysqli_query($db,$sql)){
+				
+
 
 				//Redireccion
 				if($rol=='Lector'){
+					header("Location: registrar_lector_comentarios.php?correo=$correo");
+					die();
 					
-					//header("Location: registrar_lector_comentarios.php/?correo=<?=$correo ?");
-					//die();
+
 				}else{
 					
-					header("/?correo=<?=$correo");
+					header("Location: registrarescritor.php?correo=$correo");
 					die();
 				}
 				

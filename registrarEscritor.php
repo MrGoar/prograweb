@@ -1,6 +1,4 @@
-<?php    
-    session_start();
-    $nombre = $_SESSION['user'];    
+<?php       
     $servidor = "localhost";
     $usuarioBD = "root";
     $pwdBD = "";
@@ -31,7 +29,7 @@
     <?php include("./templates/header.php")?>
 
     <div class="text-center">
-            <h1 aling="center"><b><i>Registro de usuario Escritor</i></b></h1>            
+            <h1 aling="center"><b><i>Registro de Usuario Escritor</i></b></h1>            
             <hr class="my-4">
     </div>
 
