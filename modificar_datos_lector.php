@@ -7,16 +7,30 @@ $id_usuario = null;
 $comentarios = array();
 $consultas = new ConsultasMysqli();
 
-$id_articulo = $_GET['id'];
-$articulo = $consultas->row("SELECT * from articulo where id_art = $id_articulo");
+
+
 
 if (isset($_SESSION['id_usuario'])) {
     $id_usuario = $_SESSION['id_usuario'];
 }
-$usuario = $consultas->row("SELECT from usuarios where id_usuario = $id_usuario");
-$id_lector = $usuario["id"];
-/* $lector = 
- */
+
+if(isset($_POST["temas_interes"])){
+    $tema = $_POST["temas_interes"];
+    echo "Tema interes: ".$tema;
+    $query = "UPDATE lectores SET tema_int = '$tema' WHERE id_usuario = $id_usuario ";
+    echo $query;
+    $consultas->query($query);
+
+    unset($_POST);
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit;
+}
+
+$lector = $consultas->row("SELECT * from lectores where id_usuario = $id_usuario");
+$tema = $lector['tema_int'];
+
+
+
 ?>
 
 <!doctype html>
@@ -64,22 +78,22 @@ $id_lector = $usuario["id"];
 
           <div class="form-group" style="width:49%; float:left; margin-right:1%;">
             <label for="uname">Nombre</label>
-            <input type="text" class="form-control" id="uname" placeholder="Nombre" name="nombre" required>
+            <input type="text" class="form-control" id="uname" readonly value="<?=$lector['nombre']?>" placeholder="Nombre" name="nombre" required>
           </div>
           
           <div class="form-group" style="width:49%; float:right; margin-left:1%;">
             <label for="uname">Apellido paterno</label>
-            <input type="text" class="form-control" id="ap_paterno" placeholder="Apellido paterno" name="ap_paterno" required>
+            <input type="text" class="form-control" id="ap_paterno" readonly value="<?=$lector['apellido_pat']?>" placeholder="Apellido paterno" name="ap_paterno" required>
           </div>
 
           <div class="form-group" style="width:49%; float:left; margin-right:1%;">
             <label for="uname">Apellido materno</label>
-            <input type="text" class="form-control" id="ap_materno" placeholder="Apellido materno" name="ap_materno" required>
+            <input type="text" class="form-control" id="ap_materno" readonly value="<?=$lector['apellido_mat']?>" placeholder="Apellido materno" name="ap_materno" required>
           </div>
 
           <div class="form-group" style="width:49%; float:right; margin-left:1%;">
             <label for="uname">Edad</label>
-            <input type="number" class="form-control" id="edad" placeholder="Edad" name="edad" required>
+            <input type="number" class="form-control" id="edad" readonly value="<?=$lector['edad']?>" placeholder="Edad" name="edad" required>
           </div>
 
           <div class="form-group">
@@ -88,22 +102,23 @@ $id_lector = $usuario["id"];
                   class="form-control"
                   id="temas_interes"
                   name="temas_interes"
+                  
                   required
                 >
-                  <option value="TemaUno">TemaUno</option>
-                  <option value="TemaDos">TemaDos</option>
-                  <option value="TemaTres">TemaTres</option>
-                  <option value="TemaCuatro">TemaCuatro</option>
+                  <option value="TemaUno" <?=$tema == "TemaUno"? "selected":""?> >TemaUno</option>
+                  <option value="TemaDos" <?=$tema == "TemaDos"? "selected":""?> >TemaDos</option>
+                  <option value="TemaTres" <?=$tema == "TemaTres"? "selected":""?> >TemaTres</option>
+                  <option value="TemaCuatro" <?=$tema == "TemaCuatro"? "selected":""?> >TemaCuatro</option>
                 </select>
           </div>
 
           <div class="form-group">
             <label for="uname">Correo</label>
-            <input type="text" class="form-control" id="correo" placeholder="Correo" value="antonio@toluca.tecnm.mx" name="correo" readonly required>
+            <input type="text" class="form-control" id="correo" placeholder="Correo" value="<?=$lector['correo']?>" name="correo" readonly required>
           </div>
           
           
-          <button  type="submit" class="btn btn-success btn-block" name="guardar" id="btnform" style="margin-top:2%; margin-bottom:0%;" disabled>Actulizar mis datos</button>
+          <button  type="submit" class="btn btn-success btn-block" name="guardar" id="btnform" style="margin-top:2%; margin-bottom:0%;" >Actualizar mis datos</button>
 
         </form>
       </div>

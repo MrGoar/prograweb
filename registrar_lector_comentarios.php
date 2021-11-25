@@ -1,3 +1,23 @@
+<?php
+require 'Consultas.php';
+session_start();
+$consultas = new ConsultasMysqli();
+
+$id_usuario = null;
+
+if (isset($_GET['id_usuario'])) {
+  $id_usuario = $_GET['id_usuario'];
+} else if (isset($_SESSION["id_usuario"])) {
+  $id_usuario = $_SESSION["id_usuario"];
+}
+
+$usuario_nuevo = $consultas->row("SELECT * FROM usuarios where id_usuario = $id_usuario");
+
+
+
+?>
+
+
 <!doctype html>
 <html lang="es">
 
@@ -44,7 +64,7 @@
         </div>
 
         <form method="post" action="registrar-lectores-bd/registrar-lector.php" class="was-validated" name="formulario">
-
+          <input type="hidden" value="<?=$id_usuario?>" name="id_usuario" />
           <div class="form-group" style="width:49%; float:left; margin-right:1%;">
             <label for="uname">Nombre</label>
             <input type="text" class="form-control" id="uname" placeholder="Nombre" name="nombre" required>
@@ -77,7 +97,7 @@
 
           <div class="form-group">
             <label for="uname">Correo</label>
-            <input type="text" class="form-control" id="correo" placeholder="Correo" value="antonio@toluca.tecnm.mx" name="correo" readonly required>
+            <input type="text" class="form-control" id="correo" placeholder="Correo" value="<?=$usuario_nuevo['correo']?>" name="correo" readonly required>
           </div>
 
           <div class="form-group" style="margin-top:4%;">

@@ -112,6 +112,11 @@ class ConsultasMysqli
 
     function query($sql)
     {
-        return mysqli_query($this->db, $sql);
+        return $this->db->query($sql);
+    }
+
+    function insert($sql){
+        $this->query($sql);
+        return $this->db->insert_id;
     }
 }
