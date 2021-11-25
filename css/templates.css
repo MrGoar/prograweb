@@ -1,46 +1,44 @@
-header, footer{
-    background-color: #9D5C0D;
+header,
+footer {
+  background-color: #9d5c0d;
 }
 
-
-.bg-prim{
-    background-color: #9D5C0D;
-    color: white;
+.bg-prim {
+  background-color: #9d5c0d;
+  color: white;
 }
-.bg-second{
-    background-color: #F7D08A;
-    color: #E5890A;
-}
-
-.card-second{
-    background-color: #F7D08A;
-    color: #E5890A;
-    border-color: #9D5C0D;
+.bg-second {
+  background-color: #f7d08a;
+  color: #e5890a;
 }
 
-body{
-    background-color: #F7D08A;
+.card-second {
+  background-color: #f7d08a;
+  color: #e5890a;
+  border-color: #9d5c0d;
+}
+
+body {
+  background-color: #f7d08a;
 }
 
 footer {
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    color: white;
-    padding-top: 3%;
-    padding-left: 3%;
-    padding-right: 3%;
-    padding-bottom: 1%;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  padding-top: 3%;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-bottom: 1%;
 }
 
-#detalles{
-    font-size: 24px;
-    font-weight: bold;
-    
+#detalles {
+  font-size: 24px;
+  font-weight: bold;
 }
-
 
 .responsive-iframe {
-    width: 100%;
-    height: auto;
+  width: 100%;
+  height: auto;
 }

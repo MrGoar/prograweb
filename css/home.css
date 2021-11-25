@@ -1,44 +1,44 @@
-#contenedorPrincipal{
-    padding: 3%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    overflow: hidden;
-    
+#contenedorPrincipal {
+  padding: 3%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.card{
-    width: 20rem;    
-    height: auto;       
-    overflow: hidden;     
-    text-align: justify;
-    margin: 20px;
-    float: left;
+.card {
+  width: 20rem;
+  height: auto;
+  overflow: hidden;
+  text-align: justify;
+  margin: 20px;
+  float: left;
 }
 
-#intro{
-    padding-left: 3%; 
-    padding-right: 3%;
+#intro {
+  padding-left: 3%;
+  padding-right: 3%;
 }
 
-#descripcion{
-    font-size: 18px; 
-    text-align: justify;
+#descripcion {
+  font-size: 18px;
+  text-align: justify;
 }
 
-#detalles{
-    font-size: 24px;
-    font-weight: bold;
+#detalles {
+  font-size: 24px;
+  font-weight: bold;
 }
 
- .pad-5{
-    padding-left: 5%; padding-right: 5%;   
- }
+.pad-5 {
+  padding-left: 5%;
+  padding-right: 5%;
+}
 
- .resumen{
-    font-size: 18px;
- }
+.resumen {
+  font-size: 18px;
+}
 
- .text-muted{
-    font-size: 16px;
- }
+.text-muted {
+  font-size: 16px;
+}

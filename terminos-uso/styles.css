@@ -1,0 +1,19 @@
+body{
+  background-color: rgb(157,92,13);
+}
+.box {
+  width: 70%;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 4%;
+  margin-bottom: 4%;
+  color: white;
+  font-family: "Century Gothic", sans-serif;
+  border-radius: 15px;
+}
+
+.box p {
+  text-align: justify;
+}

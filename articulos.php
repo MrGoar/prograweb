@@ -7,7 +7,7 @@
     $nomBD = "prograweb";    
     $db = new mysqli($servidor,$usuarioBD,$pwdBD,$nomBD);    
     $query = mysqli_query($db, "SELECT Titulo, autor, imagen, contenido FROM articulo");    
-    
+    error_reporting (0);
 ?>
 
 <!doctype html>
