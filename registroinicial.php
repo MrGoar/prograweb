@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
 
-<head>
     <title>Rome Blog</title>
     <link rel="icon" type="image/png" href="../../img/icono.png" />
     <meta charset="utf-8">
