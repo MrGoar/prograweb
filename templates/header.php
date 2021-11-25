@@ -1,18 +1,20 @@
 <?php
+ob_start();
+?>
+<?php
 session_start();
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-
 <head>
     <title>Rome Blog</title>
-    <link rel="icon" type="image/png" href="img/icono.png" />
+    <link rel="icon" type="image/png" href="img/icono.png" >
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" >
     
 
     <!-- Optional JavaScript -->
@@ -27,30 +29,46 @@ session_start();
 
 </head>
 
-<body>
-    <header>
+
+<header>
+    <div>
         <nav class="navbar navbar-expand-lg navbar-dark" style="display:flexbox;">                            
-            <!-- Navbar links -->
+        <!-- Navbar links -->
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <!-- Brand -->
-                <a class="navbar-brand" href="/home.php"><img src="img/rome.png" alt="logo" width="125px" height="60px"></a>
+            <!-- Brand -->
+                <a class="navbar-brand" href="home.php"><img src="img/rome.png" alt="logo" width="125px" height="60px"></a>
                 <h1>Rome Blog</h1>
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 </ul> 
-                
+                    
                 <div class="dropdown show">
+
+                    <?php
+                    
+                    if(isset($_SESSION["info"])){
+                        echo $_SESSION["info"]["user"];
+                    ?>
+                    <a class="nav-link btn btn-outline-warning my-2 my-sm-0 " href="cerrar.php" id="iniciar">                
+                    Cerrar Sesion</a>
+                    <?php
+                }else{
+                ?>
                     <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/user.png" alt="logo" width="50px" height="50px"></a>
                     <div class="dropdown-menu dropdown-menu-sm-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Iniciar Sesion</a>
-                        <a class="dropdown-item" href="#">Registrarse</a>                        
+                        <a class="dropdown-item" href="login.php">Iniciar Sesion</a>
+                        <a class="dropdown-item" href="registroinicial.php">Registrarse</a>                        
                     </div>
-                
-                
-                
-                
+
+                <?php   
+                } ?>
+                    
+                    
+                    
+                </div>
+            </div>
         </nav>
 
-        <hr style="background-color:white; margin-bottom: 2px; margin-top: 2px;">
+        <hr/ style="background-color:white; margin-bottom: 2px; margin-top: 2px;">
 
         <nav class="navbar navbar-expand-lg navbar-dark" style="padding-top:0px;">
             <!-- Navbar links -->
@@ -76,4 +94,16 @@ session_start();
                 </form>  
             </div>
         </nav>
-    </header>
+    </div>
+  
+
+
+</header>
+
+
+    
+
+       
+   
+
+
