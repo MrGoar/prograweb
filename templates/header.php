@@ -75,10 +75,10 @@ session_start();
             <div class="collapse navbar-collapse " id="collapsibleNavbar">
                 <ul class="navbar-nav mr-auto ">
                     <li class="nav-item active">
-                        <a class="nav-link" id="btnInicio" href="/home.php">Inicio</a>
+                        <a class="nav-link" id="btnInicio" href="home.php">Inicio</a>
                     </li>
                     <li class="nav-item active">
-                        <a id="btnArticulos" class="nav-link" href="/articulos.php">Artículos</a>
+                        <a id="btnArticulos" class="nav-link" href="./articulos.php">Artículos</a>
                     </li>          
                     <li class="nav-item dropdown active">                    
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorias</a>
@@ -99,11 +99,3 @@ session_start();
 
 
 </header>
-
-
-    
-
-       
-   
-
-

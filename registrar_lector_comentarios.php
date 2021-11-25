@@ -1,5 +1,10 @@
+<?php
+$correo = $_GET['correo'];
+//echo $_SESSION["info"]["user"];
+//echo $_SESSION["info"]["rol"];
+?>
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <title>Registro</title>
@@ -72,16 +77,16 @@
                   name="temas_interes"
                   required
                 >
-                  <option value="TemaUno">TemaUno</option>
-                  <option value="TemaDos">TemaDos</option>
-                  <option value="TemaTres">TemaTres</option>
-                  <option value="TemaCuatro">TemaCuatro</option>
+                  <option value="TemaUno">Edificios</option>
+                  <option value="TemaDos">Esculturas</option>
+                  <option value="TemaTres">Lugares abiertos</option>
+                  <option value="TemaCuatro">Arquitectura única</option>
                 </select>
           </div>
 
           <div class="form-group">
             <label for="uname">Correo</label>
-            <input type="text" class="form-control" id="correo" placeholder="Correo" value="antonio@toluca.tecnm.mx" name="correo" readonly required>
+            <input type="text" class="form-control" id="correo" placeholder="Correo" value="<?=$correo?>" name="correo" readonly required>
           </div>
           
           <div class="form-group" style="margin-top:4%;">
@@ -96,11 +101,11 @@
               />
               <label for="uname"
               >Al seleccionar esta casilla estas aceptando los
-              <a href="terminos-uso/term-uso.html" target="_blank"
-              >términos de uso</a
+              <a href="terminosycondiciones.php" target="_blank"
+              >términos y condiciones</a
               >
               y las
-              <a href="politicas-privacidad/politicas-priv.html" target="_blank"
+              <a href="politica_de_privacidad.php" target="_blank"
               >política de privacidad </a
               >de Rome Blog.
             </label>
