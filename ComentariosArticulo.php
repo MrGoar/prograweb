@@ -1,3 +1,4 @@
+<?php include("./templates/header.php") ?>
 <?php include("db.php");
 $Titulo = "";
 $Autor = "";
@@ -6,6 +7,7 @@ $Fecha = "";
 $Contenido = "";
 $Categoria = "";
 $Subcategoria = "";
+
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $query = "SELECT * FROM articulo WHERE id_art=$id";
@@ -28,7 +30,33 @@ $usuarioBD = "root";
 $pwdBD = "";
 $nomBD = "prograweb";  
 $db = new mysqli($servidor,$usuarioBD,$pwdBD,$nomBD);  
-$query = mysqli_query($db, "SELECT  descripcion, fecha FROM comentarios ");
+//$query = mysqli_query($db, "SELECT  descripcion, fecha FROM comentarios ");
+$nombre_usu = mysqli_query($db, "SELECT c.descripcion, c.fecha, u.nombre_usu FROM usuarios u,comentarios c WHERE u.id_usuario=c.id_usuario and c.id_art='".$id."'");
+
+if (isset($_POST['Comentar'])) {
+       
+
+    $correo=$_SESSION["info"]["user"];  
+
+   $usuario_id = mysqli_query($db, "SELECT  id_usuario FROM usuarios WHERE correo='".$correo."' ");
+$dato=mysqli_fetch_array($usuario_id);
+$dato2=$dato['id_usuario'];
+    
+    $descripcion = $_POST['descripcion'];
+    $Date = date('Y-m-d');
+
+    $query = "INSERT INTO comentarios(id_art,id_usuario,descripcion, fecha)  VALUES ('$id','$dato2','$descripcion','$Date' )";
+    $result = mysqli_query($conn, $query);
+
+
+    if (!$result) {
+        die("Query Failed.");
+    }
+    header("Location: articulos.php" );
+}
+
+
+
 
 ?>
 
@@ -53,27 +81,13 @@ $query = mysqli_query($db, "SELECT  descripcion, fecha FROM comentarios ");
 
 
 <body>
-    <?php include("./templates/header.php") ?>
+    
 
 
 
     <?php
 
-    if (isset($_POST['Comentar'])) {
-
-
-        
-        $descripcion = $_POST['descripcion'];
-        $Date = date('Y-m-d');
-
-        $query = "INSERT INTO comentarios(descripcion, fecha)  VALUES ('$descripcion','$Date' )";
-        $result = mysqli_query($conn, $query);
-
-
-        if (!$result) {
-            die("Query Failed.");
-        }
-    }
+   
 
     ?>
 
@@ -140,15 +154,15 @@ $query = mysqli_query($db, "SELECT  descripcion, fecha FROM comentarios ");
 
                     <?php
             $i = 0;
-            while ($row = mysqli_fetch_array($query)) {
+            while ($row = mysqli_fetch_array($nombre_usu)) {
                 ?>            
                 
             <div id="cartas" class="card">
             <div class="card-body">
 
-
             
-                     
+            
+            <h7 class="card-title"><?php echo $row['nombre_usu']; ?></h7> </br>
                     <h7 class="card-title"><?php echo $row['fecha']; ?></h7>
                     <p class="card-text"><?php echo $row['descripcion']; ?></p>
 
@@ -162,14 +176,32 @@ $query = mysqli_query($db, "SELECT  descripcion, fecha FROM comentarios ");
             
 
 
-                        <div class="form-group">
+                       
+                        <?php
+
+if(isset($_SESSION["info"])){
+    echo $_SESSION["info"]["user"];
+?>
+<div class="form-group">
+
+
+<div class="form-group">
                             <input type="text" style="  margin: 1em; width: 300px;  " name="descripcion" class="form-control" placeholder="Agregar comentario" autofocus>
 
                         </div>
+<button  type="submit" name="Comentar" class="btn btn-success btn-block; ">Comentar</button>
+</div>
+<?php
+}else{
+?>
 
-                        <div class="form-group">
-                            <button href="articulos.php" type="submit" name="Comentar" class="btn btn-success btn-block; ">Comentar</button>
-                        </div>
+
+<?php   
+} ?>
+                        
+
+
+
 
 
 

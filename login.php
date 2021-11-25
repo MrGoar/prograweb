@@ -1,19 +1,4 @@
-<?php
-ob_start();
-?>
-<?php    
-
-     
-    $servidor = "localhost";
-    $usuarioBD = "root";
-    $pwdBD = "";
-    $nomBD = "prograweb";    
-    $db = new mysqli($servidor,$usuarioBD,$pwdBD,$nomBD);    
-    $query = mysqli_query($db, "SELECT id_art, Titulo, autor, imagen, contenido FROM articulo");    
-    
-?>
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -27,75 +12,73 @@ ob_start();
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="/css/templates.css">
     <link rel="stylesheet" href="/css/home.css">
+    
+    
+    <style>
+    .formu{
+        max-width:50%;
+        margin: 0 auto;
+    }
+
+    .contenedor {
+                  
+        display: flex;
+        justify-content: center;
+    }
+
+    </style>
+     
+    
 </head>
 
-<body>
+<body >
     <!--HEADER-->
     <?php include("./templates/header.php")?>
+    <br>
+    <br>
 
+    <!--Cuerpo-->
 
-    <?php
+    <div >
+        
+    </div>
+    <div class="formu border border-warning rounded-lg" >
+        <div class="formu">
+            <h1>Iniciar sesion</h1>
+            <h6 class="text-muted">Aun no tengo una cuenta? <u><a href="registroinicial.php" class="text-muted">Registrarme</a> </u></h6>
+            
+        </div>
 
-if(isset($_SESSION["info"])){
-    echo $_SESSION["info"]["user"];
-    $rol=$_SESSION["info"]["rol"];
-    if($rol=="Escritor"){
+        <!--Formulario-->
+        <div id="formulario">
 
+              <form action="logincheck.php" class="contenedor" >
 
-?>
-     
-    </br><a href="AgregarArticulo.php"  class="btn btn-success btn-block" name="AgregarArticulo">Craer un nuevo articulo </a>
-                        
-<?php
-}
-}    else{
-?>
+              <div id="formdatos" class="form-group"> 
 
-<?php    
-} ?>
+                  <label for="correo">Correo:</label><br>
+                  <input type="text" id="correo" name="correo" required><br>                  
+                  <label for="pass">Contraseña:</label><br>
+                  <input type="password" id="pass" name="pass" pattern="(?=.*\d)(?=.*[A-Z]).{4,}" required><br>
+                  <br>
+                  <br>
+                  <input type="submit" value="Submit" class="btn btn-warning my-2 my-sm-0">
 
+              </div>    
+              
+           
+              
+              
+            </form>
+            
+        </div>
+    </div>
 
    
 
-
-
-    <div class="text-center">
-            <h1 aling="center"><b><i>ARTICULOS</i></b></h1>            
-            <hr class="my-4">
-    </div>
-
-    <div id="contenedorPrincipal">
-        
-        <?php
-            $i = 0;
-            while ($row = mysqli_fetch_array($query)) {
-                ?>            
-                
-            <div id="cartas" class="card">
-                <img class="card-img-top" src="data:image/jpg;base64, <?php echo base64_encode($row['imagen']); ?>" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title"><?php echo $row['Titulo']; ?></h5>
-                    <p class="card-text"><?php echo $row['autor']; ?></p>
-                    <p class="card-text"><?php echo $row['contenido']; ?></p>
-
-                    <a href="ComentariosArticulo.php?id=<?php echo $row['id_art']?>" class="btn btn-secondary"> Ver
-                </a>
-                </div>
-            </div>
-
-            <?php
-            echo "<br>";
-            }
-            ?>
-            
-    </div>
-        
-        
-        
-        
-    </div>
-
-    <!--FOOTER-->
+    <!--Footer-->
+    <br>
+    <br>
     <?php include("./templates/footer.php")?>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -104,5 +87,3 @@ if(isset($_SESSION["info"])){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js" integrity="sha512-RdSPYh1WA6BF0RhpisYJVYkOyTzK4HwofJ3Q7ivt/jkpW6Vc8AurL1R+4AUcvn9IwEKAPm/fk7qFZW3OuiUDeg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </body>
-
-</html>
