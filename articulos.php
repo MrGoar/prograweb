@@ -1,3 +1,6 @@
+<?php
+ob_start();
+?>
 <?php    
     session_start();
     $nombre = $_SESSION['user'];    
@@ -6,7 +9,7 @@
     $pwdBD = "";
     $nomBD = "prograweb";    
     $db = new mysqli($servidor,$usuarioBD,$pwdBD,$nomBD);    
-    $query = mysqli_query($db, "SELECT Titulo, autor, imagen, contenido FROM articulo");    
+    $query = mysqli_query($db, "SELECT id_art, Titulo, autor, imagen, contenido FROM articulo");    
     
 ?>
 
@@ -48,7 +51,9 @@
                     <h5 class="card-title"><?php echo $row['Titulo']; ?></h5>
                     <p class="card-text"><?php echo $row['autor']; ?></p>
                     <p class="card-text"><?php echo $row['contenido']; ?></p>
-                    <a href="#" class="btn btn-primary">Leer</a>
+
+                    <a href="ComentariosArticulo.php?id=<?php echo $row['id_art']?>" class="btn btn-secondary"> Ver
+                </a>
                 </div>
             </div>
 

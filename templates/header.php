@@ -1,9 +1,5 @@
-<?php
-ob_start();
-?>
-<?php
-session_start();
-?>
+
+
 <!doctype html>
 <html lang="es">
 

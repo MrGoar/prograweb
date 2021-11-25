@@ -1,3 +1,8 @@
+<?php
+ob_start();
+?>
+
+
 <?php include("db.php") ?>
 <!doctype html>
 <html lang="es">
@@ -51,8 +56,8 @@
         if (!$result) {
             die("Query Failed.");
         }
-
-        
+     header('Location: articulos.php');
+     exit();
     }
     ?>
     <div>
@@ -61,7 +66,7 @@
                 <div class="col-md-4">
 
 
-                    <form method="post" enctype="multipart/form-data">
+                    <form function="articulos.php" method="post" enctype="multipart/form-data">
 
 
                         <div class="form-grup">
@@ -115,7 +120,7 @@
                             </div>
 
                             <div class="form-group">
-                                <button type="submit" name="Guardar" class="btn btn-primary">Guardar</button>
+                                <button  href="\ComentariosArticulo.php"  type="submit" name="Guardar" class="btn btn-success btn-block; ">Guardar</button>
                             </div>
                     </form>
 
