@@ -18,7 +18,7 @@ if(isset($_POST["temas_interes"])){
     $tema = $_POST["temas_interes"];
     echo "Tema interes: ".$tema;
     $query = "UPDATE lectores SET tema_int = '$tema' WHERE id_usuario = $id_usuario ";
-    echo $query;
+  
     $consultas->query($query);
 
     unset($_POST);
