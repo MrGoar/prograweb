@@ -1,4 +1,7 @@
+<!DOCTYPE html>
+<html lang="es">
 
+<head>
     <title>Rome Blog</title>
     <link rel="icon" type="image/png" href="../../img/icono.png" />
     <meta charset="utf-8">
@@ -41,38 +44,29 @@
     </div>
     <div class="formu border border-warning rounded-lg" >
         <div class="formu">
-            <h1>Crear cuenta</h1>
-            <h6 class="text-muted">Ya tengo una cuenta? <u><a href="login.php" class="text-muted">Iniciar sesion</a> </u></h6>
+            <h1>Iniciar sesion</h1>
+            <h6 class="text-muted">Aun no tengo una cuenta? <u><a href="registroinicial.php" class="text-muted">Registrarme</a> </u></h6>
             
         </div>
 
         <!--Formulario-->
         <div id="formulario">
 
-              <form action="registrocheck.php" class="contenedor" >
+              <form action="logincheck.php" class="contenedor" >
 
               <div id="formdatos" class="form-group"> 
 
                   <label for="correo">Correo:</label><br>
-                  <input type="text" id="correo" name="correo" required><br>
-                  <label for="name">Nombre:</label><br>
-                  <input type="text" id="name" name="name" required><br>
+                  <input type="text" id="correo" name="correo" required><br>                  
                   <label for="pass">Contraseña:</label><br>
                   <input type="password" id="pass" name="pass" pattern="(?=.*\d)(?=.*[A-Z]).{4,}" required><br>
+                  <br>
+                  <br>
+                  <input type="submit" value="Submit" class="btn btn-warning my-2 my-sm-0">
 
               </div>    
               
-              <div id="formrol" class="form-check" >
-
-                  <label >Elige un rol:</label><br>                  
-                  <input type="radio" id="escritor" name="rol" value="Escritor">
-                  <label for="escritor">Escritor</label><br>
-                  <input type="radio" id="lector" name="rol" value="Lector" checked>                  
-                  <label for="vehicle2">Lector </label><br>
-                  <input type="submit" value="Submit" class="btn btn-warning my-2 my-sm-0">
-
-              </div>
-              
+           
               
               
             </form>
