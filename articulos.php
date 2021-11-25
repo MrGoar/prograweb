@@ -6,7 +6,7 @@
     $pwdBD = "";
     $nomBD = "prograweb";    
     $db = new mysqli($servidor,$usuarioBD,$pwdBD,$nomBD);    
-    $query = mysqli_query($db, "SELECT Titulo, autor, imagen, contenido FROM articulo");    
+    $query = mysqli_query($db, "SELECT id_art,Titulo, autor, imagen, contenido FROM articulo");    
     error_reporting (0);
 ?>
 
@@ -48,7 +48,7 @@
                     <h5 class="card-title"><?php echo $row['Titulo']; ?></h5>
                     <p class="card-text"><?php echo $row['autor']; ?></p>
                     <p class="card-text"><?php echo $row['contenido']; ?></p>
-                    <a href="#" class="btn btn-primary">Leer</a>
+                    <a href="leer_articulo.php?id=<?=$row['id_art']?>" class="btn btn-primary">Leer</a>
                 </div>
             </div>
 

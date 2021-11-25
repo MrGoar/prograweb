@@ -2,7 +2,27 @@
 ob_start();
 ?>
 <?php
-session_start();
+
+
+if(!isset($_SESSION)){
+    session_start();
+}
+
+function getLink(){
+    if(isset($_SESSION["info"])){
+        $rol = $_SESSION["info"]["rol"];
+        if($rol == "Lector"){
+            return "modificar_datos_lector.php";
+        }
+        return "modificar_datos_escritor.php";
+    }
+    return "";
+}
+
+$link_modificar_datos = getLink();
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -50,6 +70,9 @@ session_start();
                     ?>
                     <a class="nav-link btn btn-outline-warning my-2 my-sm-0 " href="cerrar.php" id="iniciar">                
                     Cerrar Sesion</a>
+                      
+                    <a class="nav-link btn btn-outline-warning my-2 my-sm-0 " href="<?=$link_modificar_datos?>" id="iniciar">                
+                    Modificar datos</a>
                     <?php
                 }else{
                 ?>
@@ -75,16 +98,27 @@ session_start();
             <div class="collapse navbar-collapse " id="collapsibleNavbar">
                 <ul class="navbar-nav mr-auto ">
                     <li class="nav-item active">
-                        <a class="nav-link" id="btnInicio" href="/home.php">Inicio</a>
+                        <a class="nav-link" id="btnInicio" href="home.php">Inicio</a>
                     </li>
                     <li class="nav-item active">
-                        <a id="btnArticulos" class="nav-link" href="/articulos.php">Artículos</a>
+                        <a id="btnArticulos" class="nav-link" href="articulos.php">Artículos</a>
                     </li>          
+
+                    <?php if(isset($_SESSION["info"]) && $_SESSION["info"]["rol"] == "Lector"){  ?>
+                        <li class="nav-item active">
+                            <a  class="nav-link" href="mis_comentarios.php">Mis comentarios</a>
+                        </li> 
+                    <?php 
+                        }
+                    ?>
+
+                    
+
                     <li class="nav-item dropdown active">                    
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorias</a>
                         <div class="dropdown-menu dropdown-menu-sm-right" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="/destino.php">Monumentos Destino</a>
-                            <a class="dropdown-item" href="/paso.php">Monumentos de Paso</a>                        
+                            <a class="dropdown-item" href="destino.php">Monumentos Destino</a>
+                            <a class="dropdown-item" href="paso.php">Monumentos de Paso</a>                        
                         </div>                    
                     </li>          
                 </ul>

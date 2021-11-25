@@ -12,7 +12,7 @@
 	$password=$_GET["pass"];
 
 
-	$sql="SELECT password,rol,correo,nombre_usu  from usuarios where correo='".$correo."'";
+	$sql="SELECT id_usuario,password,rol,correo,nombre_usu  from usuarios where correo='".$correo."'";
 	$result=mysqli_query($db,$sql);
 	$numero_filas =mysqli_num_rows($result);
 
@@ -22,12 +22,16 @@
 
 		$mostrar=mysqli_fetch_array($result);
 		$rol=$mostrar['rol'];
-		}if($password==$mostrar['password']){
+		$nombre = $mostrar['nombre_usu'];
+		$id_usuario = $mostrar['id_usuario'];
+		}
+	if($password==$mostrar['password']){
 			session_start();
 			$_SESSION["info"]["user"]=$correo;			
 			$_SESSION["info"]["rol"]=$rol;
+			$_SESSION["id_usuario"]=$id_usuario;
+			$_SESSION['user'] = $nombre;
 
-			
 
 			header("Location: home.php");
 				die();
@@ -35,8 +39,3 @@
 		}else{
 			echo "Contraseña incorrecta";
 		}
-		
-	
-
-
-?>
